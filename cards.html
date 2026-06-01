@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>깔끔한 카드형 레이아웃</title>
+    <style>
+        /* 전역 스타일 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* 카드들이 담길 그리드 컨테이너 */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 가로로 3개 정렬 */
+            gap: 30px; /* 카드 사이 간격 */
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* 개별 카드 스타일 */
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px; /* 모서리 둥글게 */
+            overflow: hidden; /* 자식 요소가 모서리를 벗어나지 않게 설정 */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 카드 마우스 호버 효과 */
+        .card:hover {
+            transform: translateY(-10px); /* 살짝 위로 이동 */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 1. 상단 이미지 영역 */
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* 비율 유지하며 꽉 채움 */
+        }
+
+        /* 2. 중단 텍스트 영역 */
+        .card-content {
+            padding: 25px;
+            flex-grow: 1; /* 남은 공간을 차지하여 버튼 위치를 아래로 밀어줌 */
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6; /* 줄간격 조절로 가독성 향상 */
+        }
+
+        /* 3. 하단 버튼 영역 */
+        .card-footer {
+            padding: 20px;
+            text-align: center; /* 버튼 중앙 정렬 */
+        }
+
+        .btn-connect {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #4a90e2;
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 버튼 호버 시 색상 변화 */
+        .btn-connect:hover {
+            background-color: #357abd;
+        }
+
+        /* 반응형 디자인 (모바일) */
+        @media (max-width: 900px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr); /* 화면이 좁아지면 2개씩 */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card-container {
+                grid-template-columns: 1fr; /* 모바일에서는 1개씩 세로 정렬 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- 첫 번째 카드: 곱셈공식 연습 앱 연결 -->
+        <article class="card" onclick="location.href='activity.html'" style="cursor: pointer;">
+            <!-- 상단: 이미지 -->
+            <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=500" alt="수학 학습 이미지" class="card-image">
+            
+            <!-- 중단: 설명 텍스트 -->
+            <div class="card-content">
+                <h2 class="card-title">곱셈공식 조립 연습</h2>
+                <p class="card-description">카드를 직접 드래그하고 조립하며 복잡한 곱셈공식을 재미있게 익힐 수 있는 학습용 웹앱입니다.</p>
+            </div>
+            
+            <!-- 하단: 버튼 -->
+            <div class="card-footer">
+                <a href="activity.html" class="btn-connect">연습 시작하기</a>
+            </div>
+        </article>
+
+        <!-- 두 번째 카드 -->
+        <article class="card">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500" alt="프로그래밍 이미지" class="card-image">
+            <div class="card-content">
+                <h2 class="card-title">모던 UI 디자인</h2>
+                <p class="card-description">사용자 중심의 직관적이고 깔끔한 인터페이스 디자인 기법을 소개합니다. 최신 트렌드를 반영한 레이아웃을 확인하세요.</p>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn-connect">접속하기</a>
+            </div>
+        </article>
+
+        <!-- 세 번째 카드 -->
+        <article class="card">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500" alt="알고리즘 이미지" class="card-image">
+            <div class="card-content">
+                <h2 class="card-title">코딩 프로젝트</h2>
+                <p class="card-description">다양한 오픈소스 프로젝트와 협업 경험을 통해 실력을 쌓으세요. 문제 해결 능력을 키우는 최고의 방법입니다.</p>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn-connect">접속하기</a>
+            </div>
+        </article>
+    </div>
+
+</body>
+</html>
